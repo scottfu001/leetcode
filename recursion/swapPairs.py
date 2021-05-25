@@ -20,3 +20,20 @@ class Solution:
         else:
             return head
         return head
+
+     def swapPairs(self, head: ListNode) -> ListNode:
+        temp = ListNode(-1)
+        temp.next = head
+        
+        pre = temp
+        while head and head.next:
+            first = head
+            second = head.next
+            pre.next = second # connect the pre pair to this pair
+            first.next = second.next
+            second.next = first
+            
+            
+            pre = first
+            head = first.next
+        return temp.next
